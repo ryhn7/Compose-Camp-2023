@@ -31,15 +31,14 @@ fun BaseScreen(
     title: String,
     artist: String,
     year: String,
+    onNextArt: () -> Unit,
+    onPreviousArt: () -> Unit,
     modifier: Modifier
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceAround,
         modifier = modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .background(color = Color(0xFFfefbff))
     ) {
         Card(
             colors = CardDefaults.cardColors(
@@ -101,13 +100,13 @@ fun BaseScreen(
             {
                 Button(
                     modifier = Modifier.width(120.dp),
-                    onClick = { /*TODO*/ }
+                    onClick = onPreviousArt
                 ) {
                     Text(text = "Previous")
                 }
                 Button(
                     modifier = Modifier.width(120.dp),
-                    onClick = { /*TODO*/ }
+                    onClick = onNextArt
                 ) {
                     Text(text = "Next")
                 }
@@ -121,10 +120,12 @@ fun BaseScreen(
 @Preview(showBackground = true)
 fun BaseScreenPreview() {
     BaseScreen(
-        image = R.drawable.flower,
+        image = R.drawable.artspace4,
         title = "Flower Still Life with a Timepiece",
         artist = "Willem van Aelst",
         year = "(1663)",
-        modifier = Modifier
+        modifier = Modifier,
+        onNextArt = {},
+        onPreviousArt = {}
     )
 }
