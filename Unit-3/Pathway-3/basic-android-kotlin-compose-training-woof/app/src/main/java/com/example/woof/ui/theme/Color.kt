@@ -17,8 +17,6 @@ package com.example.woof.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-package com.example.woof.ui.theme
-
 
 val md_theme_light_primary = Color(0xFF006C4C)
 val md_theme_light_onPrimary = Color(0xFFFFFFFF)
