@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AffirmationApp</string>
+    <string name="affirmation1">I am enough. I have enough.</string>
+    <string name="affirmation2">I believe in myself.</string>
+    <string name="affirmation3">I am grateful for another day of life.</string>
+    <string name="affirmation4">I am worthy of what I desire.</string>
+    <string name="affirmation5">Money comes frequently and easily to me.</string>
+    <string name="affirmation6">I am in the right place, at the right time, doing the right thing.</string>
+    <string name="affirmation7">I will accomplish everything I need to do today.</string>
+    <string name="affirmation8">I am constantly generating brilliant ideas.</string>
+    <string name="affirmation9">I have everything I need to achieve my goals.</string>
+</resources>
