@@ -51,14 +51,14 @@ class MarsViewModel(private val marsPhotoRepositoryImpl: MarsPhotoRepositoryImpl
                 val marsPhotoRepositoryImpl = marsPhotoRepositoryImpl
                 val listResult = marsPhotoRepositoryImpl.getPhotos()
                 marsUiState =
-                    MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
+                    MarsUiState.Success(listResult)
             } catch (e: Exception) {
                 marsUiState = MarsUiState.Error
             }
         }
     }
 
-    companion object{
+    companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as MarsPhotoApplication)

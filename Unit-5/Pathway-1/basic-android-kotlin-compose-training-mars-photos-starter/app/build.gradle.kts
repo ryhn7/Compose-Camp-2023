@@ -94,4 +94,16 @@ dependencies {
 
     // OkHttp
     implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+
+    // Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+//    Shimmer
+    implementation ("com.github.skydoves:landscapist-coil:2.2.10")
+    implementation ("com.github.skydoves:landscapist-placeholder:2.2.10")
+
 }
