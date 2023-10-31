@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com/amphibians"
+        const val BASE_URL = "https://android-kotlin-fun-mars-server.appspot.com/"
 
         inline fun <T> getApiService(apiService: Class<T>, context: Context): T {
             val client = OkHttpClient.Builder()

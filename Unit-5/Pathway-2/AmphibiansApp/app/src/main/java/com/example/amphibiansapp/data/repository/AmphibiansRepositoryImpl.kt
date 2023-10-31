@@ -12,9 +12,7 @@ class AmphibiansRepositoryImpl(private val amphibiansApi: AmphibiansApi) : Amphi
         liveData {
             try {
                 val response = amphibiansApi.getAllAmphibians()
-                response.data?.let {
-                    emit(ResultState.Success(it))
-                }
+                emit(ResultState.Success(response))
             } catch (e: Exception) {
                 emit(ResultState.Error(e.message.toString()))
             }

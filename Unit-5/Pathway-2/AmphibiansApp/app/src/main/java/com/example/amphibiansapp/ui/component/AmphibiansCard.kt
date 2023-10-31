@@ -1,8 +1,8 @@
 package com.example.amphibiansapp.ui.component
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -13,7 +13,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -31,21 +30,20 @@ import com.example.amphibiansapp.ui.theme.AmphibiansAppTheme
 fun AmphibiansCard(
     name: String,
     type: String,
-    image: Int,
+    image: String,
     description: String,
     modifier: Modifier
 ) {
-    val showShimmer = remember { mutableStateOf(true) }
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
         shape = RoundedCornerShape(8.dp),
-        modifier = modifier.padding(horizontal = 16.dp)
+        modifier = modifier
+            .padding(horizontal = 16.dp)
     ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
+        Column {
+            val showShimmer = remember { mutableStateOf(true) }
             Text(
                 text = "$name ($type)",
                 style = MaterialTheme.typography.titleLarge,
@@ -65,7 +63,12 @@ fun AmphibiansCard(
                 onSuccess = { showShimmer.value = false },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(300.dp)
+                    .background(
+                        shimmerBrushLoading(
+                            targetValue = 1300f,
+                            showShimmer = showShimmer.value
+                        )
+                    ),
             )
             Text(
                 text = description,
@@ -89,7 +92,7 @@ fun AmphibiansCardPreview() {
             AmphibiansCard(
                 name = "Great Basin Spadefoot",
                 type = "Toad",
-                image = R.drawable.img1,
+                image = "https://developer.android.com/codelabs/basic-android-kotlin-compose-amphibians-app/img/great-basin-spadefoot.png",
                 description = "This toad spends most of its life underground due to the arid desert conditions in which it lives. Spadefoot toads earn the name because of their hind legs which are wedged to aid in digging. They are typically grey, green, or brown with dark spots.",
                 modifier = Modifier
             )
