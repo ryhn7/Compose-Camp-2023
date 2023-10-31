@@ -26,9 +26,10 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.marsphotos.MarsPhotoApplication
 import com.example.marsphotos.data.MarsPhotoRepositoryImpl
+import com.example.marsphotos.domain.interface_repository.MarsPhotoRepository
 import kotlinx.coroutines.launch
 
-class MarsViewModel(private val marsPhotoRepositoryImpl: MarsPhotoRepositoryImpl) : ViewModel() {
+class MarsViewModel(private val marsPhotoRepository: MarsPhotoRepository) : ViewModel() {
     /** The mutable State that stores the status of the most recent request */
     var marsUiState: MarsUiState by mutableStateOf(MarsUiState.Loading)
         private set
@@ -48,8 +49,8 @@ class MarsViewModel(private val marsPhotoRepositoryImpl: MarsPhotoRepositoryImpl
         viewModelScope.launch {
             marsUiState = MarsUiState.Loading
             try {
-                val marsPhotoRepositoryImpl = marsPhotoRepositoryImpl
-                val listResult = marsPhotoRepositoryImpl.getPhotos()
+                val marsPhotoRepository = marsPhotoRepository
+                val listResult = marsPhotoRepository.getPhotos()
                 marsUiState =
                     MarsUiState.Success(listResult)
             } catch (e: Exception) {
@@ -62,8 +63,8 @@ class MarsViewModel(private val marsPhotoRepositoryImpl: MarsPhotoRepositoryImpl
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
                 val application = (this[APPLICATION_KEY] as MarsPhotoApplication)
-                val marsPhotoRepositoryImpl = application.container.marsPhotoRepositoryImpl
-                MarsViewModel(marsPhotoRepositoryImpl)
+                val marsPhotoRepository = application.container.marsPhotoRepository
+                MarsViewModel(marsPhotoRepository)
             }
         }
     }

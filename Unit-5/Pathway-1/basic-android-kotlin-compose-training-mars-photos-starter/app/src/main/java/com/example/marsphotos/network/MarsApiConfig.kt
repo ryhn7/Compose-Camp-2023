@@ -40,7 +40,7 @@ class MarsApiConfig(private val context: Context) : AppContainer {
         retrofit.create(MarsApiService::class.java)
     }
 
-    override val marsPhotoRepositoryImpl: MarsPhotoRepositoryImpl by lazy {
+    override val marsPhotoRepository: MarsPhotoRepository by lazy {
         MarsPhotoRepositoryImpl(retrofitService)
     }
 }
