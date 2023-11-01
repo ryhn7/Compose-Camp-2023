@@ -28,6 +28,7 @@ import com.example.inventory.data.ItemsRepository
  */
 class ItemEditViewModel(
     savedStateHandle: SavedStateHandle,
+    private val itemsRepository: ItemsRepository
 ) : ViewModel() {
 
     /**
